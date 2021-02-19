@@ -4,7 +4,8 @@
     {
 
         function start($urlGet){
-
+           
+            
             $acao = 'index';
 
             if (isset($urlGet['pagina'])) {
@@ -20,8 +21,20 @@
               $controller = 'ErroController';
           }
           
-          call_user_func_array(array(new $controller, $acao), array());
+            if (isset($urlGet['id']) && $urlGet['id'] != null) {
 
+                $id = $urlGet['id'];
+                
+                call_user_func_array(array(new $controller, $acao), array('id' => $urlGet['id']));
+            }
+            else
+            {
+                $id = null;
+                call_user_func_array(array(new $controller, $acao), array());
+            }
+          
+
+         
         }
 
 
