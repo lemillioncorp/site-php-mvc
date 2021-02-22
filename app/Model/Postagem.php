@@ -17,6 +17,7 @@
             if (!$resultado) {
                 throw new Exception("Não foi encontrado nenhuma Publicação no Banco de Dados");
             }
+           
             
             return $resultado;
         }
@@ -37,6 +38,11 @@
             }
             else{
                 $dados->comentario = Comentario::SelecionarComentarios($dados->id);
+
+                if (!$dados->comentario){
+                   $dados->comentario = 'Não Existe Nenhum Comentário!.';
+                }
+
             }
           return $dados;
         }

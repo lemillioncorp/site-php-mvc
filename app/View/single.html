@@ -5,6 +5,18 @@
             <h2 style="font: 20pt Arial; color: #8e8ef7;"> {{titulo}} </h2>
         </header>
        <p> {{conteudo}} </p>
+
+
+       <br>
+       <hr>
+       <br>
+
+        {% for coment in comentarios %}
+        <h4>{{ coment.nome }}</h4>
+        <p>{{ coment.mensagem }}</p>
+        <br>
+        {% endfor %}
+
     </article>
 
 </section>

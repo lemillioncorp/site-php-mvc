@@ -22,7 +22,7 @@ class PostController
             $parametros['id'] = $post->id;
             $parametros['titulo'] = $post->titulo;
             $parametros['conteudo'] = $post->conteudo;
-
+            $parametros['comentarios'] = $post->comentario;
             //Mostar o conteudo
            
 
