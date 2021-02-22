@@ -25,22 +25,20 @@
         {
            
             $con = Connection::getConn();
-            $sql = "SELECT * FROM postagem WHERE id = :id";
-            $sql = $con->prepare($sql);
-            $sql->bindValue(':id', $id);
-            $sql->execute();
+            $sqlComent = "SELECT * FROM postagem WHERE id = :id";
+            $consult  = $con->prepare($sqlComent);
+            $consult ->bindValue(':id', $id);
+            $consult ->execute();
            
-            $result = $sql->fetchObject('Postagem');
+            $dados = $consult->fetchObject('Postagem');
 
-
-
-            if (!$result) {
+            if (!$dados) {
                 throw new Exception("Não foi encontrado nenhuma Publicação no Banco de Dados");
             }
             else{
-                $resultado->comentario = Comentario::SelecionarComentarios($resultado->id);
+                $dados->comentario = Comentario::SelecionarComentarios($dados->id);
             }
-           return $result;
+          return $dados;
         }
     }
 

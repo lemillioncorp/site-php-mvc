@@ -10,7 +10,7 @@ class PostController
           
             $post = Postagem::SelecionaPostPorId($id);
 
-            var_dump($post);
+            //var_dump($post);
 
              //echo "PÁGINA HOME"; 
             $loader = new \Twig\Loader\FilesystemLoader('app/View');
@@ -24,8 +24,10 @@ class PostController
             $parametros['conteudo'] = $post->conteudo;
 
             //Mostar o conteudo
-            
+           
+
             $conteudo = $template->render($parametros);
+            
             echo $conteudo;
 
      

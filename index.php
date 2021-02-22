@@ -28,6 +28,7 @@ ob_start();
         $id = $_GET['id']; 
     } 
     
+    
     $saida = ob_get_contents();
         ob_clean();
 

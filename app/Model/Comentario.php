@@ -6,14 +6,14 @@
         {
             $con = Connection::getConn();
 
-            $sql = "SELECT * FROM  comentario WHERE id_postagem = :id";
-            $sql = $con ->prepare($sql);
-            $sql->bindValue(':id', $idPost);
-            $sql->execute();
+            $sqlPostagem= "SELECT * FROM  comentario WHERE id_postagem = :id";
+            $sqlPost = $con ->prepare($sqlPostagem);
+            $sqlPost->bindValue(':id', $idPost);
+            $sqlPost->execute();
 
             $resultado = array();
 
-            while ($row = $sql->fetchObject('Comentario')) {
+            while ($row = $sqlPost->fetchObject('Comentario')) {
                 $resultado[] = $row;
             }
 
