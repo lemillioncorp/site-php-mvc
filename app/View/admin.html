@@ -6,6 +6,7 @@
 
     <a href="http://localhost/git-servidor-php/criando-site-mvc/?pagina=admin&metodo=create">Criar Publicação</a>
     <hr>
+   
     <table>
         <tr>
             <th>ID</th>
@@ -13,10 +14,12 @@
             <th>ALTERAÇÃO</th>
             <th>DELEÇÃO</th>
         </tr>
+        {% for postagem in postagens %}
         <tr>
-            <th>ID</th>
-            <th>TÍTULO</th>
-            <th>ALTERAÇÃO</th>
-            <th>DELEÇÃO</th>
+            <th>{{ postagem.id }}</th>
+            <th>{{ postagem.titulo }}</th>
+            <th> <a href="http://localhost/git-servidor-php/criando-site-mvc/?pagina=admin&metodo=index&metodo=change&id={{ postagem.id }}">ALTERAR</a></th>
+            <th> <a href="http://localhost/git-servidor-php/criando-site-mvc/?pagina=admin&metodo=index&metodo=delete&id={{ postagem.id }}">APAGAR</a> </th>
         </tr>
+        {% endfor %}
     </table>
