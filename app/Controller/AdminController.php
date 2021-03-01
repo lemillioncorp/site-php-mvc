@@ -82,13 +82,19 @@ class AdminController
         }
       
     }
-    public function delete()
-    {
-        
-    }
+        public function delete($id)
+        {
+              try {
+            Postagem::delete($id);
+             echo '<script>alert("Publicação Apagada com Sucesso!");</script>';
 
-     
-      
+             echo '<script>location.href="http://localhost/git-servidor-php/criando-site-mvc/?pagina=admin&metodo=index"</script>';
+        } catch (Exception $e) {
+
+                echo '<script>alert(" Erro ao Deletar. '.$e->getMessage().'");</script>';
+                 echo '<script>location.href="http://localhost/git-servidor-php/criando-site-mvc/?pagina=admin&metodo=index"</script>';
+        }
+        }
 }
 
 

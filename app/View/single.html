@@ -10,6 +10,18 @@
        <br>
        <hr>
        <br>
+    <h1>Comentar Nesta Publicação</h1>
+
+<form action="http://localhost/git-servidor-php/criando-site-mvc/?pagina=post&metodo=addComent" method="post">
+    <span> Nome: </span>
+    <input type="text" name="nome" value="" placeholder="Nome da Publicação">
+    <span>Comentário </span>
+    <textarea name="msg" id="" cols="30" rows="2"></textarea>
+    <br>
+   <input type="hidden" name="id" value="{{id}}">
+    <input type="submit" value="Comentar">
+
+</form>
 
         {% for coment in comentarios %}
         <h4>{{ coment.nome }}</h4>

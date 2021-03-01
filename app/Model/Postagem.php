@@ -34,17 +34,15 @@
            
             $dados = $consult->fetchObject('Postagem');
 
-            if (!$dados) {
-                throw new Exception("Não foi encontrado nenhuma Publicação no Banco de Dados");
-            }
-            else{
-                $dados->comentario = Comentario::SelecionarComentarios($dados->id);
+            if ($dados) {
+               
+                 $dados->comentario = Comentario::SelecionarComentarios($dados->id);
 
                 if (!$dados->comentario){
                    $dados->comentario = 'Não Existe Nenhum Comentário!.';
                 }
-
             }
+           
           return $dados;
         }
         public static function insert($dadosPost)
@@ -90,20 +88,17 @@
              }
                return true;
         }
-         public static function delete($recebePost)
+         public static function delete($id)
         {
-  
               $con = Connection::getConn();
 
-              $query = "DELETE FROM postagem  SET titulo = :tit, conteudo = :cont WHERE id = :id";
+              $query = "DELETE FROM postagem  WHERE  id = :id";
               $sql = $con->prepare($query);
-              $sql->bindValue(":tit", $recebePost['titulo']);
-              $sql->bindValue(":cont", $recebePost['conteudo']);
-              $sql->bindValue(":id", $recebePost['id']);
-                $result = $sql->execute();
+              $sql->bindValue(":id", $id);
+              $result = $sql->execute();
 
              if ( $result == 0) {
-                  throw new Exception("Falha ao Editar Publicação");
+                  throw new Exception("Falha ao Apagar Publicação");
 
                return false;
              }

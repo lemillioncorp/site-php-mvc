@@ -20,6 +20,23 @@
             //var_dump($resultado);
             return $resultado;
         }
+        public static function insert($reqPost)
+        {
+            $con = Connection::getConn();
+
+            $sqlComentario = "INSERT INTO comentario (nome, mensagem, id_postagem) VALUES (:nome, :mensagem, :id_postagem)";
+            $sqlComent = $con ->prepare( $sqlComentario);
+            $sqlComent->bindValue(':nome',  $reqPost['nome']);
+            $sqlComent->bindValue(':mensagem',  $reqPost['msg']);
+           $sqlComent->bindValue(':id_postagem', $reqPost['id']);
+            $sqlComent->execute();
+
+            if ($sqlComent->rowCount()) {
+              return true;
+            }
+            throw new Exception("Falha na Inserção");
+            
+        }
         
     }
 
