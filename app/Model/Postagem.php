@@ -2,7 +2,8 @@
 
     class Postagem
     {
-        public static function SelecionaTodos(){
+        public static function SelecionaTodos()
+        {
             $con = Connection::getConn();
             
             $sql = "SELECT * FROM postagem ORDER BY id DESC";
@@ -45,6 +46,10 @@
 
             }
           return $dados;
+        }
+        public static function insert($dadosPost)
+        {
+            
         }
     }
 
